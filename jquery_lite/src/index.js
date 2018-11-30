@@ -1,7 +1,10 @@
 import DomNodeCollection from "./dom_node_collection.js";
 
 window.$l = (selector) => {
-  if (typeof selector === HTMLElement) {
+  if (typeof selector === 'object') {
+    return new DomNodeCollection([selector]);
+    
+  } else if (typeof selector === 'string'){
     const array = Array.from(document.querySelectorAll(selector));
     return new DomNodeCollection(array);
   }
